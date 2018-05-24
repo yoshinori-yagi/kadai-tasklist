@@ -12,4 +12,6 @@
         </ul>
     @endif
 
+    {!! link_to_route('tasks.create', '新規たすくの作成') !!}
+
 @endsection

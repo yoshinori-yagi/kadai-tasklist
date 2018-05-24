@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Tasks;
+use App\Task;
 
-class MessagesController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $tasks = Tasks::all();
+        $tasks = Task::all();
 
         return view('tasks.index', [
             'tasks' => $tasks,
@@ -29,7 +29,7 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        $task = new Tasks;
+        $task = new Task;
 
         return view('tasks.create', [
             'task' => $task,
@@ -44,7 +44,7 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Tasks;
+        $task = new Task;
         $task->content = $request->content;
         $task->save();
 
@@ -59,7 +59,7 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        $task = Tasks::find($id);
+        $task = Task::find($id);
 
         return view('tasks.show', [
             'task' => $task,
@@ -74,7 +74,7 @@ class MessagesController extends Controller
      */
     public function edit($id)
     {
-        $task = Tasks::find($id);
+        $task = Task::find($id);
 
         return view('tasks.edit', [
             'task' => $task,
@@ -90,7 +90,7 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Tasks::find($id);
+        $task = Task::find($id);
         $task->content = $request->content;
         $task->save();
 
@@ -105,6 +105,9 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+
+        return redirect('/');
     }
 }
