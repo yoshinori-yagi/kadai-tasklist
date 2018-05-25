@@ -6,6 +6,9 @@
 
     {!! Form::model($task, ['route' => 'tasks.store']) !!}
 
+        {!! Form::label('status', 'すてーたす:') !!}
+        {!! Form::text('status') !!}
+       
         {!! Form::label('content', 'たすく:') !!}
         {!! Form::text('content') !!}
 
