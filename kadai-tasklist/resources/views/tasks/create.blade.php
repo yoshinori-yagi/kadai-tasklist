@@ -4,16 +4,24 @@
 
 <h1>たすく新規作成ページ</h1>
 
-    {!! Form::model($task, ['route' => 'tasks.store']) !!}
-
-        {!! Form::label('status', 'すてーたす:') !!}
-        {!! Form::text('status') !!}
-       
-        {!! Form::label('content', 'たすく:') !!}
-        {!! Form::text('content') !!}
-
-        {!! Form::submit('作成') !!}
-
-    {!! Form::close() !!}
+     <div class="row">
+        <div class="col-xs-6">
+            {!! Form::model($task, ['route' => 'tasks.store']) !!}
+            
+                <div class="form-group">
+                    {!! Form::label('status', 'すてーたす:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                </div>
+                    
+                <div class="form-group">
+                    {!! Form::label('content', 'たすく:') !!}
+                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                </div>
+                
+                {!! Form::submit('作成', ['class' => 'btn btn-primary']) !!}
+        
+            {!! Form::close() !!}
+        </div>
+    </div>
 
 @endsection
